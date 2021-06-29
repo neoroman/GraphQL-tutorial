@@ -1,0 +1,17 @@
+{
+  "dialect": "mysql",
+  "port": 3306,
+  "omitNull": true,
+  "additional" : {
+  	"freezeTableName" : true,
+  	"timestamps" : false
+  },
+  "username": "root",
+  "database": "sample_db_graphql",
+  "output": "./models",
+  "lang": "es5",
+  "caseModel": "c",
+  "caseProp": "c",
+  "schema": false,
+  "views": false
+}

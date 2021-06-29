@@ -1,0 +1,275 @@
+
+type AdminDepartment {
+    deptCode: String!
+    parentDeptCode: String!
+    parentDepartment: AdminDepartment
+    name: String!
+    type: String!
+    description: String
+    deptOrder: String!
+    status: String
+    """
+    createTime: unix timestamp 13자리(milli-second 포함)
+    """
+    createTime: String!
+    """
+    updateTime: unix timestamp 13자리(milli-second 포함)
+    """
+    updateTime: String
+}
+
+type AdminUser {
+    id: ID!
+    name: String!
+    # password: String!
+    groupId: Int!
+    """
+    createTime: unix timestamp 13자리(milli-second 포함)
+    """
+    createTime: String!
+    """
+    updateTime: unix timestamp 13자리(milli-second 포함)
+    """
+    updateTime: String
+    email: String
+    department: AdminDepartment
+    rank: String
+    position: String
+    sex: String
+    address: String
+    officePhone: String
+    mobilePhone: String
+    familyPhone: String
+    executive: String
+    status: String
+    projectList: [Project]
+    """
+    작업 시간 자동 입력 구분: AUTO000(수동입력), AUTO001(일별 자동 입력), AUTO002(주별 자동 입력), AUTO003(월별 자동 입력)
+    getCodeGroup(id: "AUTO") 로 획득가능
+    """
+    timeFlowClass: String
+    """
+    작업 시간 기준: 8 시간 (default)
+    """
+    standardWorkHours: Int
+    """
+    FCM 토큰 정보
+    """
+    fcmToken: String
+}
+
+input UpdateUserInfo {
+    name: String
+    password: String
+    groupId: Int
+    email: String
+    #department: AdminDepartment
+    rank: String
+    position: String
+    sex: String
+    address: String
+    officePhone: String
+    mobilePhone: String
+    familyPhone: String
+    executive: String
+    projectList: [UpdateProject]
+    """
+    작업 시간 자동 입력 구분: AUTO000(수동입력), AUTO001(일별 자동 입력), AUTO002(주별 자동 입력), AUTO003(월별 자동 입력)
+    getCodeGroup(id: "AUTO") 로 획득가능
+    """
+    timeFlowClass: String
+    """
+    작업 시간 기준: 8 시간 (default)
+    """
+    standardWorkHours: Int
+    """
+    FCM 토큰 정보
+    """
+    fcmToken: String
+}
+
+type Project {
+    """
+    (Optional) userId: 사용자 ID가 있는 경우에는 task 정보가 포함됨, 그렇지 않으면 task=null
+    """
+    userId: String
+    projectId: Int!
+    name: String
+    deptCode: String
+    department: AdminDepartment
+    projectCode: String
+    status: String
+    taskList: [Tasks]
+}
+
+type ProjectUserMap {
+    projectId: Int
+    userId: String!
+    status: String
+}
+
+type Tasks {
+    taskId: Int!
+    name: String
+    projectId: Int
+    status: String
+}
+
+type TaskMap {
+    userId: String!
+    taskId: Int!
+    task: Tasks
+    projectId: Int
+    project: Project
+    status: String
+    percentage: Float
+}
+
+input UpdateTask {
+    taskId: Int!
+    name: String
+    projectId: Int
+    status: String
+}
+
+input UpdateProject {
+    name: String
+    projectId: Int!
+    projectCode: String
+    deptCode: String
+    taskList: [UpdateTask]
+    status: String
+}
+
+input WorktimeFlow {
+    userId: String!
+    taskId: Int!
+    projectId: Int!
+    percentage: Float!
+}
+
+type Timetable { 
+    """
+    workDay: (String) YYYYMMDD 형태
+    """
+    workDay: String
+    """
+    workHour: (Float) 원래는 Int형이었으나 향후를 위해 Float로 변경
+    """
+    workHour: Float
+    userId: String
+    taskId: Int
+    task: Tasks
+    projectId: Int
+    project: Project
+}
+
+input Worktime {
+    """
+    workDay: (String) YYYYMMDD 형태
+    """
+    workDay: String
+    """
+    workHour: (Float) 원래는 Int형이었으나 향후를 위해 Float로 변경
+    """
+    workHour: Float
+    userId: String
+    taskId: Int
+    projectId: Int
+}
+
+type WorktimeTotal {
+    totalHour: Float
+    description: String
+    success: Boolean!
+}
+
+type UserDept {
+    userId: String!
+    deptCode: String!
+    createTime: String
+    updateTime: String
+}
+
+
+##################################################################
+type Query {
+    """########################################################################
+    로그인 여부를 확인할 수 있음
+    단, {API URL}/secure API에 { "id": <아이디>, "pwd": <암호> } body에 넣어 호출하여
+    { "token": <생성된 토큰> } 을 reponse로 얻을 수 있으며 이를 GraphQL endpoint 호출시
+    Header에 포함하여 호출해야 한다.
+    """
+    isLogin: Boolean!
+    
+    """########################################################################
+    유엔젤 전체 조직도 코드 테이블, 직접 호출하기보다는 getUserInfo() 내의 department로 확인할 수 있음
+    """
+	getAdminDepartment(limit: Int = 200, offset: Int = 0): [AdminDepartment]
+
+    """########################################################################
+    사용자 정보 조회, 가입한 Project, Task, Department 등을 한번에 획득 가능함
+    """
+	getUserInfo(id: String!): [AdminUser]
+
+    """########################################################################
+    프로젝트 관리 테이블, id로만 조회가능함
+    """
+	getProject(id: Int!, userId: String, limit: Int = 200, offset: Int = 0): [Project]
+
+    """########################################################################
+    프로젝트에 포함되는 상세 Task 정보 테이블, 직접 사용하기보다는 getUserInfo()를 통해서 가입한 프로젝트 정보를 획득 가능
+    """
+	getTasks(id: Int!, limit: Int = 200, offset: Int = 0): [Tasks]
+
+    """########################################################################
+    TaskID와 UserID와 매핑 테이블, 직접 사용할 일은 없음
+    """
+	getUserTask(userId: String, limit: Int = 200, offset: Int = 0): [TaskMap]
+
+    """########################################################################
+    작업시간(Timesheet) 관리 테이블
+    """
+	getTimetable(userId: String!, date: String!, limit: Int = 200, offset: Int = 0): [Timetable]
+
+    """########################################################################
+    사용자 특정 일자의 작업 시간의 총 합을 구할 수 있음
+    (Mandatory) date: 월별 총 work hour 획득을 위한 일자, YYYYMMDD 형식
+    (Optional) durationDay: 특정 일자 동안의 work hour 획득을 위한 일자 수, 예, 20210614 부터 20210620까지의 시간은 '7'을 입력
+                            단, durationDay는 date이 YYYYMMDD 형식으로 일자일 경우에만 동작함
+    """
+    getWorkTimeTotal(userId: String!, date: String!, durationDay: Int = 0): WorktimeTotal
+}
+type Mutation {
+    """########################################################################
+    사용자 정보 수정
+    """
+    updateUserInfo(id: String!, userInfo: UpdateUserInfo!): AdminUser
+
+    """########################################################################
+    작업 시간 입력
+    """
+    putWorkTime(userId: String!, workDay: String!, projectId: Int!, taskId: Int!, workHour: Float!): Timetable
+
+    """########################################################################
+    작업 시간 자동 입력 흐름
+    """
+    putWorkTimeFlow(userId: String!, flows:[WorktimeFlow]!, count: Int! = 0): [TaskMap]
+
+    """########################################################################
+    작업 시간 자동 입력 프로세스
+    """
+    processAutoTimeFlow(userId: String!, workDay: String!): [Timetable]
+
+    """########################################################################
+    여러개(max: 31) 시간 입력, count 가 0 이면 error 리턴
+    """
+    putMultipleWorkTime(userId: String!, worktimes: [Worktime]!, count: Int! = 0): WorktimeTotal
+}
+##################################################################
+
+
+
+
+
+
