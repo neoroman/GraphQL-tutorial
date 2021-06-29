@@ -1,0 +1,226 @@
+query isLogin {
+  isLogin
+}
+query getUserInfo {
+  getUserInfo(id: "neoroman") {
+    id
+    groupId
+    name
+    email
+    timeFlowClass
+    standardWorkHours
+    fcmToken
+    department {
+      name
+      deptCode
+      parentDepartment {
+        name
+        deptCode
+        description
+        parentDepartment {
+          name
+          deptCode
+          description
+        }
+      }
+      description
+      type
+      status
+    }
+    rank
+    position
+    sex
+    projectList {
+      name
+      projectId
+      projectCode
+      taskList {
+        name
+        taskId
+        status
+      }
+      status
+    }
+    createTime
+    updateTime
+  }
+}
+mutation updateUserInfo {
+  updateUserInfo(
+    id: "neoroman"
+    userInfo: {
+      name: "거루칸 김응식"
+      password: "qwer1234"
+      email: "neoroman@gmail.com"
+      sex: "M1"
+      address: "분당구 황새울로240번길 3"
+      officePhone: "031-710-6xxx"
+      mobilePhone: "+82 10-87xx-xx40"
+      familyPhone: "010-87xx-xx40"
+      timeFlowClass: "AUTO003"
+      standardWorkHours: 8
+      fcmToken: "Abra_Cadabra"
+    }
+  ) {
+    id
+    groupId
+    name
+    email
+    timeFlowClass
+    standardWorkHours
+    fcmToken
+    department {
+      name
+      deptCode
+      parentDepartment {
+        name
+        deptCode
+        description
+        parentDepartment {
+          name
+          deptCode
+          description
+        }
+      }
+      description
+      type
+      status
+    }
+    rank
+    position
+    sex
+    projectList {
+      name
+      projectId
+      projectCode
+      taskList {
+        name
+        taskId
+        status
+      }
+      status
+    }
+    createTime
+    updateTime
+  }
+}
+query getTimetable {
+  getTimetable(userId: "neoroman", date: "20130103", offset: 0, limit: 20) {
+    userId
+    projectId
+    project {
+      name
+      status
+    }
+    taskId
+    task {
+      taskId
+      name
+      status
+    }
+    workDay
+    workHour
+  }
+}
+query getWorkTimeTotal {
+  getWorkTimeTotal(userId: "neoroman", date: "202106", durationDay: 0) {
+    totalHour
+    description
+    success
+  }
+}
+mutation putWorkTime {
+  putWorkTime(
+    userId: "neoroman"
+    workDay: "20210604"
+    workHour: 4.3
+    taskId: 4536
+    projectId: 870
+  ) {
+    workDay
+    workHour
+    task {
+      taskId
+      name
+    }
+    project {
+      projectId
+      projectCode
+      name
+    }
+  }
+}
+mutation putMultipleWorkTime {
+  putMultipleWorkTime(
+    userId: "neoroman"
+    worktimes: [
+      {
+        workDay: "20210601"
+        workHour: 5
+        userId: "neoroman"
+        taskId: 8725
+        projectId: 1283
+      }
+      {
+        workDay: "20210602"
+        workHour: 6
+        userId: "neoroman"
+        taskId: 8726
+        projectId: 1283
+      }
+      {
+        workDay: "20210603"
+        workHour: 7
+        userId: "neoroman"
+        taskId: 8926
+        projectId: 1447
+      }
+    ]
+    count: 3
+  ) {
+    totalHour
+    description
+    success
+  }
+}
+mutation putWorkTimeFlow {
+  putWorkTimeFlow(
+    userId: "neoroman"
+    flows: [
+      { userId: "neoroman", taskId: 2588, projectId: 1720, percentage: 0.25 }
+      { userId: "neoroman", taskId: 1573, projectId: 1713, percentage: 0.375 }
+      { userId: "neoroman", taskId: 853, projectId: 1713, percentage: 0.25 }
+      { userId: "neoroman", taskId: 61, projectId: 1723, percentage: 0.125 }
+    ]
+    count: 4
+  ) {
+    userId
+    task {
+      taskId
+      name
+    }
+    project {
+      projectId
+      projectCode
+      name
+    }
+    percentage
+    status
+  }
+}
+mutation processAutoTimeFlow {
+  processAutoTimeFlow(userId: "neoroman", workDay: "202106") {
+    userId
+    workDay
+    workHour
+    project {
+      projectId
+      projectCode
+      name
+    }
+    task {
+      taskId
+      name
+    }
+  }
+}

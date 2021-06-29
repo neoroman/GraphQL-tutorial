@@ -1,0 +1,5 @@
+//.babelrc
+{
+    "presets": ["env", "stage-3"]
+}
+  
