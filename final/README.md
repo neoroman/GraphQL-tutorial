@@ -25,17 +25,21 @@ Sample of GraphQL-Yoga + Express + JWT
    mysql> CREATE DATABASE sample_db_graphql;
    mysql> quit
    ```
-3. Restore mysql from `migrations/dump-sample_db_graphql.sql` file: [migrations/dump-sample_db_graphql.sql](https://raw.githubusercontent.com/neoroman/GraphQL-tutorial/main/final/migrations/dump-sample_db_graphql.sql)
+2. Restore mysql from `migrations/dump-sample_db_graphql.sql` file: [migrations/dump-sample_db_graphql.sql](https://raw.githubusercontent.com/neoroman/GraphQL-tutorial/main/final/migrations/dump-sample_db_graphql.sql)
    ```
    $ mysql -uroot -p sample_db_graphql < ./migrations/dump-sample_db_graphql.sql
    ```
    
-5. npm install
+3. npm install
    ```
    $ npm install
    ```
+   3.1 If `sh: nodemon: command not found` error occurred
+   ```
+   $ npm i -g nodemon
+   ```
 
-7. npm start
+4. npm start
    ```
    $ npm start
    ```
