@@ -1,5 +1,3 @@
-import { sequelize } from "../models";
-
 const utils = require("../utils");
 const models = require('../models');
 
