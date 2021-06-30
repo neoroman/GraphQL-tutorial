@@ -1,0 +1,44 @@
+query UserInfoQuery {
+  getUserInfo(id: "ksh7512") {
+    id
+    groupId
+    name
+    email
+    timeFlowClass
+    standardWorkHours
+    fcmToken
+    department {
+      name
+      deptCode
+      parentDepartment {
+        name
+        deptCode
+        description
+        parentDepartment {
+          name
+          deptCode
+          description
+        }
+      }
+      description
+      type
+      status
+    }
+    rank
+    position
+    sex
+    projectList {
+      name
+      projectId
+      projectCode
+      taskList {
+        name
+        taskId
+        status
+      }
+      status
+    }
+    createTime
+    updateTime
+  }
+}

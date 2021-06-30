@@ -1,6 +1,6 @@
 
-# Created by https://www.toptal.com/developers/gitignore/api/android,androidstudio
-# Edit at https://www.toptal.com/developers/gitignore?templates=android,androidstudio
+# Created by https://www.toptal.com/developers/gitignore/api/androidstudio,android
+# Edit at https://www.toptal.com/developers/gitignore?templates=androidstudio,android
 
 ### Android ###
 # Built application files
@@ -49,6 +49,7 @@ captures/
 .idea/assetWizardSettings.xml
 .idea/dictionaries
 .idea/libraries
+.idea/jarRepositories.xml
 # Android Studio 3 in .gitignore file.
 .idea/caches
 .idea/modules.xml
@@ -88,6 +89,9 @@ lint/generated/
 lint/outputs/
 lint/tmp/
 # lint/reports/
+
+# Android Profiling
+*.hprof
 
 ### Android Patch ###
 gen-external-apklibs
@@ -164,7 +168,6 @@ obj/
 .idea/sqlDataSources.xml
 .idea/dynamic.xml
 .idea/uiDesigner.xml
-.idea/jarRepositories.xml
 
 # OS-specific files
 .DS_Store
@@ -212,4 +215,4 @@ fabric.properties
 
 !/gradle/wrapper/gradle-wrapper.jar
 
-# End of https://www.toptal.com/developers/gitignore/api/android,androidstudio
+# End of https://www.toptal.com/developers/gitignore/api/androidstudio,android
