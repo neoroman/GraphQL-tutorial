@@ -2,12 +2,11 @@
   "name": "GraphQL-tutorial",
   "version": "1.0.0",
   "main": "index.js",
-  "type": "module",
   "dependencies": {
     "express-session": "^1.16.2",
     "graphql-yoga": "^1.18.3",
     "jsonwebtoken": "^8.5.1",
-    "mysql2": "^1.6.5",
+    "mysql2": "^2.2.5",
     "sequelize": ">=6.0.0"
   },
   "devDependencies": {
