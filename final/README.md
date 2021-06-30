@@ -44,6 +44,8 @@ Sample of GraphQL-Yoga + Express + JWT
    $ npm start
    ```
 
+5. Violla, now you can connect localhost:4000/play on your web brower, see next [section](https://github.com/neoroman/GraphQL-tutorial/tree/main/final#graphql-playground)
+
 
 # GraphQL playground
 1. Open your favorite web browser (recommend Goolge Chrome)
