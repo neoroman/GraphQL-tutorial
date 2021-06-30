@@ -7,6 +7,10 @@ Sample of GraphQL-Yoga + Express + JWT
    ```
    $ brew install mysql
    ```
+   * Start `mysql` service as daemon
+   ```
+   $ brew services start mysql
+   ```
    * Set root password of mysql database
    ```
    $ mysql -uroot
