@@ -35,10 +35,10 @@ dependencies {
 ```
 2. Get Schema (Used terminal) (Write in your Android project directory)
 ```
-$ mkdir -p app/src/main/graphql/com/shong/angelnetandroid
-$./gradlew :app:downloadApolloSchema \
---endpoint='https://boan.uangel.com:4000/api' \
---schema='app/src/main/graphql/com/shong/angelnetandroid/schema.json' \
+$ mkdir -p app/src/main/graphql/com/shong/sample
+$ ./gradlew :app:downloadApolloSchema \
+--endpoint='Your server' \
+--schema='app/src/main/graphql/com/shong/sample/schema.json' 
 ```
 3. Add Manifest
 ```
