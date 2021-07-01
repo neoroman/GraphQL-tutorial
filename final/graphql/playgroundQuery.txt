@@ -49,11 +49,11 @@ mutation updateUserInfo {
   updateUserInfo(
     id: "neoroman"
     userInfo: {
-      name: "거루칸 김응식"
+      name: "김응식"
       password: "qwer1234"
       email: "neoroman@gmail.com"
       sex: "M1"
-      address: "분당구 황새울로240번길 3"
+      address: "분당구 황새울로"
       officePhone: "031-710-6xxx"
       mobilePhone: "+82 10-87xx-xx40"
       familyPhone: "010-87xx-xx40"
