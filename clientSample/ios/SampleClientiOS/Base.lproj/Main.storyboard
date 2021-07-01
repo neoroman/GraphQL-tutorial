@@ -55,9 +55,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="78o-dD-FbX">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="78o-dD-FbX">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -66,6 +65,12 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="79D-5m-oxj"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="78o-dD-FbX" firstAttribute="bottom" secondItem="79D-5m-oxj" secondAttribute="bottom" id="2r5-qL-HYs"/>
+                            <constraint firstItem="78o-dD-FbX" firstAttribute="top" secondItem="79D-5m-oxj" secondAttribute="top" id="6KU-OW-EIL"/>
+                            <constraint firstItem="78o-dD-FbX" firstAttribute="trailing" secondItem="79D-5m-oxj" secondAttribute="trailing" id="Uct-9c-I6s"/>
+                            <constraint firstItem="78o-dD-FbX" firstAttribute="leading" secondItem="79D-5m-oxj" secondAttribute="leading" id="fFA-a6-YYk"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="dataText" destination="78o-dD-FbX" id="hw6-tO-J4b"/>

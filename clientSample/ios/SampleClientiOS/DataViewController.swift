@@ -14,8 +14,9 @@ class DataViewController: UIViewController {
             do {
                 let jsonData = try JSONSerialization.data(withJSONObject: jsonDict, options: [.prettyPrinted])
                 if let aString = String(data: jsonData, encoding: .utf8) {
-                    let setColor = NSAttributedString(string: aString)
-                    self.dataText.attributedText = setColor
+                    let setData = NSMutableAttributedString(string: aString)
+                    setData.addAttribute(NSAttributedString.Key.backgroundColor, value: UIColor.white, range: NSRange(location: 0, length: aString.count))
+                    self.dataText.attributedText = setData
                 }
             }
             catch {

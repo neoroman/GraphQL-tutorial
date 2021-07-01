@@ -11,6 +11,6 @@ import Apollo
 class Network {
   static let shared = Network()
 
-  private(set) lazy var apollo = ApolloClient(url: URL(string: "http://localhost:4000/api")!)
+  private(set) lazy var apollo = ApolloClient(url: URL(string: "http://10.254.110.76:4000/api")!)
 }
 
