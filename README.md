@@ -1,6 +1,10 @@
 # GraphQL-tutorial
 Tutorial for GraphQL + Node  Express + MySQL, and sample for Android / iOS client
 
+# Blog
+- [NeoRoman's GraphQL-tutorial (Korean)](https://neoroman.github.io/GraphQL-tutorial/)
+
+
 # Materials
 - [Starter tutorial](https://github.com/neoroman/GraphQL-tutorial/tree/main/starter#graphql-tutorial-starter) at ${TOP_DIR}/[starter](https://github.com/neoroman/GraphQL-tutorial/tree/main/starter)/
 - [Final tutorial](https://github.com/neoroman/GraphQL-tutorial/tree/main/final#graphql-tutorial-for-final) at ${TOP_DIR}/[final](https://github.com/neoroman/GraphQL-tutorial/tree/main/final)/
