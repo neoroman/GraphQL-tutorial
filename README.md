@@ -12,22 +12,22 @@ Tutorial for GraphQL + Node  Express + MySQL, and sample for Android / iOS clien
 
 # Prerequisite
 * Install node (+ npm)
-```
-curl "https://nodejs.org/dist/latest/node-${VERSION:-$(wget -qO- https://nodejs.org/dist/latest/ | sed -nE 's|.*>node-(.*)\.pkg</a>.*|\1|p')}.pkg" > "$HOME/Downloads/node-latest.pkg" && sudo installer -store -pkg "$HOME/Downloads/node-latest.pkg" -target "/"
-```
-or
-```
-brew install node
-```
+   ```
+   curl "https://nodejs.org/dist/latest/node-${VERSION:-$(wget -qO- https://nodejs.org/dist/latest-v14.x/ | sed -nE 's|.*>node-(.*)\.pkg</a>.*|\1|p')}.pkg" > "$HOME/Downloads/node-latest.pkg" && sudo installer -store -pkg "$HOME/Downloads/node-latest.pkg" -target "/"
+   ```
+     or (node@14 recommended)
+   ```
+   brew install node@14
+   ```
 * Install sequelize-auto
-```
-brew install sequelize-auto
-```
+   ```
+   brew install sequelize-auto
+   ```
 
 # Requirements
 - macOS or Windows PC
-- node 11.0 or later
-- npm 7.0 or later
+- node 11.0 or later (recommend node@14.17.2)
+- npm 7.0 or later (recommend npm@7.19.1)
 - (Optional) DBeaver.app 21.0 or later
 - (Optional) pm2 5.0 or later
    ```
