@@ -1,0 +1,96 @@
+type AdminDepartment {
+    deptCode: String!
+    parentDeptCode: String
+    # parentDepartment: AdminDepartment
+    name: String!
+    type: String!
+    description: String
+    deptOrder: String!
+    status: String
+    createTime: Float!
+    updateTime: Float!
+}
+
+type AdminUser {
+    id: ID!
+    name: String!
+    groupId: Int!
+    createTime: String!
+    updateTime: String
+    email: String
+    # 3
+    # department: AdminDepartment
+    rank: String
+    position: String
+    sex: String
+    address: String
+    officePhone: String
+    mobilePhone: String
+    familyPhone: String
+    executive: String
+    status: String
+    # 4
+    # projectList: [Project]
+    timeFlowClass: String
+    standardWorkHours: Int
+    fcmToken: String
+}
+
+type ProjectUserMap {
+    projectId: Int!
+    userId: String!
+    status: String!
+}
+
+type Project {
+    projectId: Int!
+    name: String!
+    deptCode: String
+    # department: AdminDepartment
+    projectCode: String!
+    status: String!
+    # taskList: [Tasks]!
+}
+
+type Tasks {
+    taskId: Int!
+    name: String!
+    projectId: Int!
+    status: String!
+}
+
+type TaskMap {
+    userId: String!
+    taskId: Int!
+    # task: Tasks
+    projectId: Int!
+    # project: Project
+    status: String!
+    percentage: Float!
+}
+
+type Timetable { 
+    workDay: String!
+    workHour: Float!
+    userId: String!
+    taskId: Int!
+    # task: Tasks
+    projectId: Int!
+    # project: Project
+    isLocked: Boolean!
+}
+
+type UserDept {
+    userId: String!
+    deptCode: String
+    createTime: Float!
+    updateTime: Float!
+}
+
+type Query {
+	getUserInfo(id: String!): [AdminUser]!
+}
+
+type Mutation {
+    putUserInfo(id: String!, password: String, email: String): AdminUser!
+}
