@@ -39,7 +39,6 @@ extension DataViewController {
             case .success(let graphQLResult):
                 if let userInfo = graphQLResult.data?.getUserInfo,
                    let data = userInfo[0] {
-//                    self.dataText.text = "\(data)"
                     self.jsonDict = data.resultMap.jsonObject
                 }
 
